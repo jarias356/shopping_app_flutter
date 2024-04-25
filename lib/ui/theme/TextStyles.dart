@@ -15,4 +15,10 @@ class TextsStyles {
     color: Colors.black,
   );
 
+  static TextStyle importantText = const TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+    color: Colors.black,
+  );
+
 }

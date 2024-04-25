@@ -10,7 +10,7 @@ class InventoryRepository {
     return rng.nextInt(max - min) + min;
   }
 
-  Future<List<Product>> getProducts() async {
+  List<Product> getProducts()  {
     return List<Product>.generate(10, (index) =>
         Product(
           id: index++,

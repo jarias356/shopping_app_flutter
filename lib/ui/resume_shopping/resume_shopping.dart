@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
+import 'package:shopping_app/core/inventory/products_vm.dart';
 import 'package:shopping_app/routes/route_constants.dart';
+import 'package:shopping_app/ui/theme/TextStyles.dart';
 
 import '../shared/models/app_bar_model.dart';
 import '../shared/shared_widgets.dart';
@@ -10,6 +13,8 @@ class ResumeShopping extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Provider.of<ProductsVM>(context).getTotalShop();
+
     final AppBarModel appBarModel = AppBarModel(
         title: "Resume",
         context: context,
@@ -23,8 +28,14 @@ class ResumeShopping extends StatelessWidget {
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(32.0),
-              child: Container(
-                  color: Colors.blueGrey
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("Total to Pay", style: TextsStyles.title),
+                    Text("\$ ${Provider.of<ProductsVM>(context).totalShop}", style: TextsStyles.importantText)
+                  ],
+                ),
               ),
             ),
           ),
@@ -41,6 +52,7 @@ class ResumeShopping extends StatelessWidget {
                 const SizedBox(height: 32),
                 FilledButton(
                     onPressed: () {
+                      Provider.of<ProductsVM>(context, listen: false).resetAll();
                       context.goNamed(RouteConstants.home);
                     },
                     child: const Text("Finish Shopping")

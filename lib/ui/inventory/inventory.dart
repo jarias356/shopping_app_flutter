@@ -7,14 +7,15 @@ import 'package:shopping_app/ui/shared/models/app_bar_model.dart';
 import 'package:shopping_app/ui/shared/shared_widgets.dart';
 import 'package:shopping_app/ui/theme/TextStyles.dart';
 
-class InventoryScreen extends StatelessWidget {
-  const InventoryScreen({super.key});
+class Inventory extends StatelessWidget {
+  const Inventory({super.key});
 
   @override
   Widget build(BuildContext context) {
     final AppBarModel appBarModel =
         AppBarModel(title: "Inventory", context: context);
     Provider.of<ProductsVM>(context).getProducts();
+    Provider.of<ProductsVM>(context).resetTotalShop();
     return Scaffold(
       appBar: SharedWidgets.buildAppBarTitleCenter(appBarModel),
       body: Center(

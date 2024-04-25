@@ -13,7 +13,8 @@ class ShoppingBasket extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Provider.of<ProductsVM>(context).getProductsByShop();
+    Provider.of<ProductsVM>(context, listen: false).getProductsByShop();
+    Provider.of<ProductsVM>(context, listen: false).resetTotalShop();
 
     final AppBarModel appBarModel = AppBarModel(
         title: "Shopping Basket",
