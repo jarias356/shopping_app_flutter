@@ -9,4 +9,10 @@ class TextsStyles {
     color: Colors.white,
   );
 
+  static TextStyle title = const TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.bold,
+    color: Colors.black,
+  );
+
 }

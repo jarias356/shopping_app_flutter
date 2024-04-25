@@ -1,11 +1,9 @@
-import 'dart:ffi';
-
 class Product {
   final String name;
-  final double price;
-  double quantityByShop;
+  final int price;
+  int quantityByShop = 0;
 
-  double get total => price * quantityByShop;
+  int get total => price * quantityByShop;
 
   Product({
     required this.name,

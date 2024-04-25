@@ -5,12 +5,8 @@ import 'package:shopping_app/routes/route_app.dart';
 import 'core/inventory/inventory_vm.dart';
 
 void main() {
-  runApp(MultiProvider(
-    providers: [
-      Provider(create: (_) => InventoryVM()),
-    ],
-    child: const MyApp()
-  ));
+  runApp(ChangeNotifierProvider<InventoryVM>(
+      create: (BuildContext context) => InventoryVM(), child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {

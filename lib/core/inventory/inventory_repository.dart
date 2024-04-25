@@ -3,9 +3,11 @@ import 'dart:math';
 import 'package:shopping_app/core/models/Product.dart';
 
 class InventoryRepository {
-  double getRandomPrice() {
+  int getRandomPrice() {
     var rng = Random();
-    return rng.nextDouble() * 100;
+    int min = 1;
+    int max = 500;
+    return rng.nextInt(max - min) + min;
   }
 
   Future<List<Product>> getProducts() async {
