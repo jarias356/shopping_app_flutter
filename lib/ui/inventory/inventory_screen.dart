@@ -1,5 +1,7 @@
  import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
+import 'package:shopping_app/core/inventory/inventory_vm.dart';
 import 'package:shopping_app/routes/route_constants.dart';
 import 'package:shopping_app/ui/shared/models/app_bar_model.dart';
 import 'package:shopping_app/ui/shared/shared_widgets.dart';
@@ -13,6 +15,7 @@ class InventoryScreen extends StatelessWidget {
         title: "Inventory",
         context: context
     );
+    InventoryVM inventoryVM = Provider.of<InventoryVM>(context);
     return Scaffold(
       appBar: SharedWidgets.buildAppBarTitleCenter(appBarModel),
       body: Center(
@@ -22,8 +25,27 @@ class InventoryScreen extends StatelessWidget {
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(32.0),
-                child: Container(
-                  color: Colors.blueGrey
+                child: ListView.builder(
+                    itemCount: inventoryVM.lstProducts.length,
+                    itemBuilder: (context, index) {
+                      var product = inventoryVM.lstProducts[index];
+                      return const Padding(
+                        padding: EdgeInsets.all(16),
+                        child: Card(
+                          child: Row(
+                            children: [
+                              Column(
+
+                              ),
+                              IconButton(
+                                  onPressed: () {},
+                                  icon: Icon(Icons.add_circle_outline)
+                              )
+                            ],
+                          ),
+                        ),
+                      )
+                    }
                 ),
               ),
             ),

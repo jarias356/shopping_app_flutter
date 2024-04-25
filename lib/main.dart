@@ -2,8 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shopping_app/routes/route_app.dart';
 
+import 'core/inventory/inventory_vm.dart';
+
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(
+    providers: [
+      Provider(create: (_) => InventoryVM()),
+    ],
+    child: const MyApp()
+  ));
 }
 
 class MyApp extends StatelessWidget {
