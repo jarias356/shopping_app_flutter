@@ -13,7 +13,8 @@ class InventoryRepository {
   Future<List<Product>> getProducts() async {
     return List<Product>.generate(10, (index) =>
         Product(
-          name: 'Product $index',
+          id: index++,
+          name: 'Product ${index++}',
           price: getRandomPrice(),
           quantityByShop: 0,
         )
